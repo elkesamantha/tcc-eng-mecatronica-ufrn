@@ -1,2 +1,5 @@
 *.zip
 *.csv
+env
+*.parquet
+series_train.parquet/

@@ -1,0 +1,61 @@
+Para ajustar adequadamente o XGBoost, baseado no livro de Jason Brownlee, os seguintes aspectos e hiperparâmetros foram mapeados:
+
+HIPERPARÂMETROS IMPORTANTES:
+
+Learning Rate (eta):
+Controla o impacto de cada árvore individual no modelo final.
+Valores típicos: 0.01 a 0.3.
+Recomenda-se iniciar com valores menores, como 0.1, e reduzir para evitar overfitting em treinamentos longos.
+
+Número de Estimadores (n_estimators):
+Determina o número de árvores no modelo.
+Testar entre 100 e 1000 é comum, com ajustes baseados na performance.
+
+Máxima Profundidade da Árvore (max_depth):
+Controla a complexidade do modelo.
+Valores baixos (3 a 10) são recomendados para evitar overfitting.
+Modelos com maior profundidade tendem a ser mais expressivos, mas com maior risco de overfitting.
+
+Subsample:
+Proporção de amostras usadas para treinar cada árvore.
+Intervalo típico: 0.5 a 1.0.
+Valores menores ajudam a prevenir overfitting.
+
+Colsample_bytree:
+Porcentagem de colunas usadas ao construir cada árvore.
+Intervalo recomendado: 0.3 a 1.0.
+
+Gamma:
+Controla a redução mínima de perda para fazer uma divisão em um nó.
+Valores maiores priorizam divisões mais significativas, ajudando a regularizar o modelo.
+
+Lambda e Alpha (Regularização L1 e L2):
+Lambda controla a penalidade L2 (regularização de Ridge).
+Alpha ajusta a penalidade L1 (regularização de Lasso).
+Ambos ajudam a reduzir overfitting.
+
+Taxa de Dropout (em Boosting Variantes, como DART):
+Controla o dropout de árvores para melhorar a generalização.
+Recomenda-se entre 0.1 e 0.5.
+
+ESTRATÉGIA DE AJUSTE (Tuning):
+
+Grid Search:
+Teste combinações de hiperparâmetros para identificar a melhor configuração.
+
+Busca Aleatória:
+Se o espaço de busca for muito grande, usar uma abordagem aleatória é mais eficiente.
+
+Otimização Bayesiana:
+Usa modelos probabilísticos para explorar o espaço de parâmetros eficientemente.
+
+Validação Cruzada:
+Divida os dados em várias partes para avaliar a performance média e evitar overfitting.
+
+MÉTRICAS PARA A AVALIAÇÃO:
+
+Erro Quadrático Médio (MSE): Útil para problemas de regressão.
+
+Log Loss: Para problemas de classificação.
+
+AUC-ROC: Ideal para modelos de classificação binária, considerando a área sob a curva ROC.
